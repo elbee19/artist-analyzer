@@ -1,7 +1,7 @@
 == Artist Analyzer
 
-![Shot1](http://i.imgur.com/qKXSpqe.png)
-![Shot2](http://i.imgur.com/PJgJWcB.png)
+http://i.imgur.com/qKXSpqe.png
+http://i.imgur.com/PJgJWcB.png
 
 
 Artist Analyzer is a single-page app(SPA) that, given an Artist's name, tell you the sentiment of some of their top songs.
