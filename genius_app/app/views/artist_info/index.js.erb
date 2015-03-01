@@ -1,5 +1,3 @@
-resultCount = 0
-
 $.extend({
     createElement: function(el, props) {
         var $el = $(document.createElement(el));
@@ -9,7 +7,7 @@ $.extend({
 });
 
 // hide main image
-$("#smileysPicture").hide();
+$("#smileysPicture").slideUp();
 $("#resultsList").html("");
 
 // show loading
@@ -38,25 +36,14 @@ $("#resultsBox").append(loaderElem);
 
 // get list of all song ids from variable
 song_ids = <%= @song_ids %>;
-//song_ids = [222];
-resultCount = song_ids.length;
 
-// for each varaible get fire call and append results, for each result reduce count
+// for each song id, get the song info and append the result
 $.each(song_ids, function(key,value)
 {
-	//$("#resultsBox").append("<h1>"+key+"</h1>");
 	$.ajax({
 		url: '/song/'+value,
 		type: 'GET',
 		success: function(data) {
-			//$("#resultsBox").append("<p>"+data.toSource()+"</p>");
-			//$('<%= j render(:partial => "result", :locals => {:data => "data"})%>').insertBefore('#resultsBox');
-			//$("#resultsBox").prepend('<%= j render(:partial => "result")%>');
-
-			//$("<h1>lol</h1>").insertBefore("#loader");
-
-			//alert(data.toSource());
-
 			resultElement = createResultElement(data);
 			$('#resultsList').append(resultElement);
 		}
@@ -67,11 +54,6 @@ $.each(song_ids, function(key,value)
 $(document).ajaxStop(function () {
     $("#loader").remove();
 });
-//$("#resultsBox").append('<%= j render "result" %>');
-//$("#resultsBox").append('<%= j render "result" %>');
-
-// when count is 0 stop loading
-//$("#loader").remove();
 
 function createResultElement(data)
 {
@@ -119,7 +101,10 @@ function createResultElement(data)
 	}
 
 	resultElem.find("#geniusLink").attr("href",data.genius_url);
-	resultElem.find("#songDescription").html(data.description);
-	//alert(resultElem.html());
+
+	//handle escape chars
+	desc = data.description.replace(/(?:\r\n|\r|\n)/g, '<br />');
+	resultElem.find("#songDescription").html(desc);
+
 	return resultElem;
 }

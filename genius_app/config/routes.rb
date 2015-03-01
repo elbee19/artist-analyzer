@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  match "/halwa" => "application#dummy", :via =>:get
   resources :song
+  resources :artist_info
   match "/" => "application#index", :via =>:get 
   match "/artistinfo" => "application#artist_info", :via => :get
 

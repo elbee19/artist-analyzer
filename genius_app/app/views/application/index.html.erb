@@ -1,12 +1,10 @@
-
-
 <div class="row">
   <%= image_tag("smileys.png", :alt => "Artist Analyzer", :size => "400x300", :class => "center-block voffset7", :id => "smileysPicture") %>
   <br />
   <h1 class="text-center voffset3 logo">Artist Analyzer</h1>
 
 
-<%= form_tag '/artistinfo', method: :get, id:"searchForm", remote: true do %>
+<%= form_tag '/artist_info', method: :get, id:"searchForm", remote: true do %>
 <div class="row">
     <div class="col-lg-6 col-lg-offset-3">
     <%= text_field_tag :artist, params[:artist],:class => "form-control input-lg voffset6 text-center search-box" %> </div></div>

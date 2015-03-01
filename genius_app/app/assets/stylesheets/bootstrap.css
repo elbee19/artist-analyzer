@@ -6564,6 +6564,8 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+/* Custom styles */
 .voffset  { margin-top: 2px; }
 .voffset1 { margin-top: 5px; }
 .voffset2 { margin-top: 10px; }
@@ -6614,10 +6616,17 @@ h1.logo {
 }
 
 div {
- /* border:1px solid black;*/
+ /* Testing only border:1px solid black;*/
 }
 
-/* Loading animation */
+@media (min-width: 1200px) {
+  .container {
+    width: 770px;
+  }
+}
+
+/* For loading spinner */
+/* Source: https://github.com/tobiasahlin/SpinKit */
 .spinner {
   margin: 100px auto;
   width: 20px;
