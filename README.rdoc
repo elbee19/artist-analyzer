@@ -1,8 +1,17 @@
 == Artist Analyzer
 
-Artist Analyzer is a single-page app(SPA) that analyzes the sentiments (positive/negative) of a few songs, given an artist's name.
+![Shot1](http://i.imgur.com/qKXSpqe.png)
+![Shot2](http://i.imgur.com/PJgJWcB.png)
+
+
+Artist Analyzer is a single-page app(SPA) that, given an Artist's name, tell you the sentiment of some of their top songs.
+
+Songs with thumbs up against them are ones with positive sentiments, and ones with thumbs down against them are ones with negative sentiments.
 
 This is my first SPA & my first experience with Ruby & Rails. Please feel free to shoot suggestions at amitruparel91@gmail.com
+
+Note:
+- The app only pulls about 20 songs for a given artist.
 
 Credits:
 - Image/Icons were obtained from psdgraphics.com
