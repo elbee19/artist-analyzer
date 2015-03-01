@@ -1,6 +1,3 @@
-APPLICATION_ID = "f3bf4c8a"
-APPLICATION_KEY = "ec182f2c570cf7a96bd5bbe6992157fd"
-
 class Song
 	def initialize(title,lyrics,media,description,url)
 		@title = title
@@ -25,8 +22,8 @@ class Song
 	  url = URI.parse("https://api.aylien.com/api/v1/#{endpoint}")
 	  headers = {
 	      "Accept"                           =>   "application/json",
-	      "X-AYLIEN-TextAPI-Application-ID"  =>   APPLICATION_ID,
-	      "X-AYLIEN-TextAPI-Application-Key" =>   APPLICATION_KEY
+	      "X-AYLIEN-TextAPI-Application-ID"  =>   Rails.application.secrets.APPLICATION_ID,
+	      "X-AYLIEN-TextAPI-Application-Key" =>   Rails.application.secrets.APPLICATION_KEY
 	  }
 
 	  http = Net::HTTP.new(url.host, url.port)

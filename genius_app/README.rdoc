@@ -1,28 +1,12 @@
-== README
+== Artist Analyzer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Artist Analyzer is a single-page app(SPA) that analyzes the sentiments (positive/negative) of a few songs, given an artist's name.
 
-Things you may want to cover:
+This is my first SPA & my first experience with Ruby & Rails. Please feel free to shoot suggestions at amitruparel91@gmail.com
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Credits:
+- Image/Icons were obtained from psdgraphics.com
+- The Genius API is used via this gem: https://github.com/timrogers/rapgenius
+- Image conversions were done using http://freeonlinephotoeditor.com/
+- This app uses Aylien's sentiment analysis API: http://aylien.com/
+- This app uses Bootstrap: http://getbootstrap.com/
