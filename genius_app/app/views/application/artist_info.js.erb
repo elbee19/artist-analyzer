@@ -1,0 +1,125 @@
+resultCount = 0
+
+$.extend({
+    createElement: function(el, props) {
+        var $el = $(document.createElement(el));
+        $el.attr(props);
+        return $el;
+    }
+});
+
+// hide main image
+$("#smileysPicture").hide();
+$("#resultsList").html("");
+
+// show loading
+//TODO: too much repetition here, add method
+loaderElem = $.createElement('div', {'class':'spinner','id':'loader'});
+
+loaderSubElem1 = $.createElement('div',{'class':'spinner-container container1'});
+loaderSubElem2 = $.createElement('div',{'class':'spinner-container container2'});
+loaderSubElem3 = $.createElement('div',{'class':'spinner-container container3'});
+loaderSubElem1.append($.createElement('div', {'class':'circle1'}));
+loaderSubElem1.append($.createElement('div', {'class':'circle2'}));
+loaderSubElem1.append($.createElement('div', {'class':'circle3'}));
+loaderSubElem1.append($.createElement('div', {'class':'circle4'}));
+loaderSubElem2.append($.createElement('div', {'class':'circle1'}));
+loaderSubElem2.append($.createElement('div', {'class':'circle2'}));
+loaderSubElem2.append($.createElement('div', {'class':'circle3'}));
+loaderSubElem2.append($.createElement('div', {'class':'circle4'}));
+loaderSubElem3.append($.createElement('div', {'class':'circle1'}));
+loaderSubElem3.append($.createElement('div', {'class':'circle2'}));
+loaderSubElem3.append($.createElement('div', {'class':'circle3'}));
+loaderSubElem3.append($.createElement('div', {'class':'circle4'}));
+loaderElem.append(loaderSubElem1);
+loaderElem.append(loaderSubElem2);
+loaderElem.append(loaderSubElem3);
+$("#resultsBox").append(loaderElem);
+
+// get list of all song ids from variable
+song_ids = <%= @song_ids %>;
+//song_ids = [222];
+resultCount = song_ids.length;
+
+// for each varaible get fire call and append results, for each result reduce count
+$.each(song_ids, function(key,value)
+{
+	//$("#resultsBox").append("<h1>"+key+"</h1>");
+	$.ajax({
+		url: '/song/'+value,
+		type: 'GET',
+		success: function(data) {
+			//$("#resultsBox").append("<p>"+data.toSource()+"</p>");
+			//$('<%= j render(:partial => "result", :locals => {:data => "data"})%>').insertBefore('#resultsBox');
+			//$("#resultsBox").prepend('<%= j render(:partial => "result")%>');
+
+			//$("<h1>lol</h1>").insertBefore("#loader");
+
+			//alert(data.toSource());
+
+			resultElement = createResultElement(data);
+			$('#resultsList').append(resultElement);
+		}
+	});
+});
+
+
+$(document).ajaxStop(function () {
+    $("#loader").remove();
+});
+//$("#resultsBox").append('<%= j render "result" %>');
+//$("#resultsBox").append('<%= j render "result" %>');
+
+// when count is 0 stop loading
+//$("#loader").remove();
+
+function createResultElement(data)
+{
+	resultElem = $('<%= j render(:partial => "result", :locals => {:data => "data"})%>');
+	
+	if(data.sentiment == 1)
+	{
+		resultElem.find("#negativeImage").remove();
+	}
+	else
+	{
+		resultElem.find("#positiveImage").remove();
+	}
+
+	resultElem.find("#songTitle").html(data.title);
+
+	if(data.media!=null)
+	{
+
+		remSoundCloud = true;
+		remYouTube = true;
+		$.each(data.media, function(key,val){
+			//alert(val.media_provider+" "+val.media_url);
+			if(val.media_provider == "youtube")
+			{
+				remYouTube = false;
+				resultElem.find("#youTubeLink").attr("href",val.media_url);
+			}
+
+			if(val.media_provider == "soundcloud")
+			{
+				remSoundCloud = false;
+				resultElem.find("#soundCloudLink").attr("href",val.media_url);
+			}
+		});
+
+		if(remYouTube)
+		{
+			resultElem.find("#youTubeLink").remove();
+		}
+		if(remSoundCloud)
+		{
+			resultElem.find("#soundCloudLink").remove();
+		}
+	}
+
+	resultElem.find("#geniusLink").attr("href",data.genius_url);
+	resultElem.find("#songDescription").html(data.description);
+	//alert(resultElem.html());
+	return resultElem;
+}

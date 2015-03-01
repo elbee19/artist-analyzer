@@ -1,0 +1,39 @@
+<li class="media voffsetli">
+	<div class="pull-left">
+	    <%= image_tag("negative.png", :alt => "This song has a negative sentiment", :alt => "Song Name", :class => "media-object voffset2", :id=>"negativeImage", :size => "40x40") %>
+	    <%= image_tag("positive.png", :alt => "This song has a positive sentiment", :alt => "Song Name", :class => "media-object voffset2", :id=>"positiveImage", :size => "40x40") %>
+
+	</div>
+    <div class="media-body">
+		<h1 class="media-heading voffset1">
+
+		<span id="songTitle" />
+		<span style="padding-left:20px" />
+			
+			<%= 
+				link_to(
+					image_tag("genius.png", :id=>"geniusImage", :alt => "Genius",:class => "voffsetbottom2 mediaimage",  :size => "50x50"),
+					"",
+					:id => "geniusLink"
+				)
+			%>
+			<%= 
+				link_to(
+					image_tag("soundcloud.png", :id=>"soundCloudImage",  :alt => "SoundCloud", :class => "voffsetbottom2 mediaimage", :size => "50x50"),
+					"",
+					:id => "soundCloudLink"
+				)
+			%>
+
+			<%= 
+				link_to(
+					image_tag("youtube.png", :id=>"youTubeImage", :alt => "YouTube", :class => "voffsetbottom2 mediaimage", :size => "50x50"),
+					"", 
+					:id => "youTubeLink"
+				)
+			%>
+		</h1>
+
+		<p id="songDescription" />
+	</div>
+</li>

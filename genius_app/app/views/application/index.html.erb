@@ -1,0 +1,68 @@
+
+
+<div class="row">
+  <%= image_tag("smileys.png", :alt => "Artist Analyzer", :size => "400x300", :class => "center-block voffset7", :id => "smileysPicture") %>
+  <br />
+  <h1 class="text-center voffset3 logo">Artist Analyzer</h1>
+
+
+<%= form_tag '/artistinfo', method: :get, id:"searchForm", remote: true do %>
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+    <%= text_field_tag :artist, params[:artist],:class => "form-control input-lg voffset6 text-center search-box" %> </div></div>
+<% end %>
+
+</div>
+
+
+<div id="resultsBox" class="voffset6">
+	<ul id="resultsList" class="media-list">
+	  <li class="media voffsetli">
+	    <div class="pull-left">
+	      
+	        <%= image_tag("negative.png", :alt => "Lalala", :alt => "Song Name", :class => "media-object voffset2", :size => "40x40") %>
+	    </div>
+	    <div class="media-body">
+	      <h1 class="media-heading voffset1">Without Me
+<span style="padding-left:20px"> </span>
+	      	<%= image_tag("genius.png", :alt => "Song Name",:class => "voffsetbottom2 mediaimage",  :size => "50x50") %>
+	      	<%= image_tag("soundcloud.png",  :alt => "Song Name", :class => "voffsetbottom2 mediaimage", :size => "50x50") %>
+	      	<%= image_tag("youtube.png", :alt => "Song Name", :class => "voffsetbottom2 mediaimage", :size => "50x50") %>
+	      
+	      </h1>
+	      
+
+	      	<p>Eminem realizes his importance to the rap game, and claims that it wouldn’t be the same without him. First single of The Eminem Show. One of the densest raps in history, although often not recognized as such because it is “poppy” and a lead single.\n\nThe Official Music Video:\n\nhttps://www.youtube.com/watch?v=YVkUvmDQ3HY </p>
+
+	      
+
+	    </div>
+	  </li>
+
+	  <li class="media voffsetli">
+	    <div class="pull-left">
+	      
+	        <%= image_tag("positive.png", :alt => "Lalala", :alt => "Song Name", :class => "media-object voffset2", :size => "40x40") %>
+
+
+
+
+	    </div>
+	    <div class="media-body">
+	      <h1 class="media-heading voffset1">Without Me
+<span style="padding-left:20px"> </span>
+	      	<%= image_tag("genius.png", :alt => "Song Name",:class => "voffsetbottom2 mediaimage",  :size => "50x50") %>
+	      	<%= image_tag("soundcloud.png",  :alt => "Song Name", :class => "voffsetbottom2 mediaimage", :size => "50x50") %>
+	      	<%= image_tag("youtube.png", :alt => "Song Name", :class => "voffsetbottom2 mediaimage", :size => "50x50") %>
+	      
+	      </h1>
+	      
+
+	      	<p>Eminem realizes his importance to the rap game, and claims that it wouldn’t be the same without him. First single of The Eminem Show. One of the densest raps in history, although often not recognized as such because it is “poppy” and a lead single.\n\nThe Official Music Video:\n\nhttps://www.youtube.com/watch?v=YVkUvmDQ3HY </p>
+
+	    </div>
+	  </li>
+	</ul>
+</div>
+
+</div>
